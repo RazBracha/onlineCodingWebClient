@@ -9,10 +9,8 @@ import Editor from '@monaco-editor/react';
 
 const serverURL = "https://online-coding-web-gg9w.vercel.app";
 const socket = io(serverURL, {
-  cors: {
-    transports: ["websocket"],
-    withCredentials: true
-  }
+  transports: ["websocket"],
+  withCredentials: true
 })
 
 function CodeDisplayPage(codeId) {
