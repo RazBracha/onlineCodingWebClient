@@ -1,0 +1,39 @@
+@import 'animate.css';
+@import 'highlight.js/styles/default.css';
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Quicksand:wght@300&display=swap");
+
+.display{
+    text-align: center;
+    align-items: center; 
+    justify-content: center;
+}
+
+.headline{
+    font-family: 'Aclonica', sans-serif;
+    font-size: 200%;
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.mission{
+    font-family: 'Quicksand', sans-serif;
+}
+.editor{
+    align-items: center; 
+    justify-content: center;
+}
+.message-window {
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    width: 200px;
+    max-width: 80%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  

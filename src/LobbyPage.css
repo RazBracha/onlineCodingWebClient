@@ -1,0 +1,30 @@
+@import 'animate.css';
+
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Quicksand:wght@300&display=swap");
+
+.lobby-page{
+  text-align: center;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  flex-direction: column;
+}
+
+.lobby-header{
+
+  font-family: 'Aclonica', sans-serif;
+  font-size: 300%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+
+  display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: fadeInDown; 
+  animation-duration: 2s;
+
+}
+
+.choose-option{
+  font-family: 'Quicksand', sans-serif;
+}

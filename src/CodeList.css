@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&family=Quicksand:wght@300&display=swap");
+
+.code-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.code-links {
+  width: 180px;
+  height: 130px;
+  font-family: 'Aclonica', sans-serif;
+  font-size: 130%;
+  background-color: #B9AFA1;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1.5px solid black;
+  border-radius: 8px;
+  margin-top: 5%;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.code-button:hover {
+  transform: scale(1.1);
+  transition-duration: 0.5s;
+}
