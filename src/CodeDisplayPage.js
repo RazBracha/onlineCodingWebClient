@@ -39,6 +39,10 @@ function CodeDisplayPage(codeId) {
   }, [codeBlockId]);
 
   useEffect(() => {
+    socket.emit("join_room", codeBlockId);
+  }, [codeBlockId]);
+
+  useEffect(() => {
     socket.on("user_connected", (data) => {
       setUser(data.user);
     });
@@ -58,6 +62,12 @@ function CodeDisplayPage(codeId) {
 
     });
   }, [socket]);
+
+  useEffect(() => {
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   const sendMessage = (messageText) => {
     socket.emit("send_message", { messageText, user });
