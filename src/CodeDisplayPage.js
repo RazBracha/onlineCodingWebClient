@@ -7,8 +7,11 @@ import { getUserId } from './Utils';
 import Editor from '@monaco-editor/react';
 
 
-const server = "https://online-coding-web-gg9w.vercel.app";
-const socket = io.connect("https://online-coding-web-gg9w.vercel.app/");
+const serverURL = "https://online-coding-web-gg9w.vercel.app";
+// const socket = io.connect("https://online-coding-web-gg9w.vercel.app/");
+const socket = io(serverURL, {
+  withCredentials: true
+})
 
 function CodeDisplayPage(codeId) {
   const [choosenCode, setChoosenCode] = useState([]);
@@ -23,7 +26,7 @@ function CodeDisplayPage(codeId) {
 
   useEffect(() => {
     try {
-      fetch(`${server}/codeblocks/${codeBlockId}`)
+      fetch(`${serverURL}/codeblocks/${codeBlockId}`)
         .then(response => response.json())
         .then(data => {
           console.log(data)
