@@ -14,7 +14,6 @@ function LobbyPage() {
     // Fetch code blocks from the server  
     fetch(`${server}/codeblocks`, {
       credentials: true,
-      "Access-Control-Allow-Origin": "onlinecodingwebclient-production.up.railway.app"
     })
       .then(response => response.json())
       .then(data => setCodeBlocks(data))
