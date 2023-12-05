@@ -6,12 +6,13 @@ function LobbyPage() {
 
   // const server = "https://online-coding-web-gg9w.vercel.app/codeblocks";   vercel
   const server = "https://onlinecodingweb-production.up.railway.app";
+  // const server = "http://localhost:5000";
 
   const [codeBlocks, setCodeBlocks] = useState([]);
 
   useEffect(() => {
     // Fetch code blocks from the server  
-    fetch(server)
+    fetch(`${server}/codeblocks`)
       .then(response => response.json())
       .then(data => setCodeBlocks(data))
       .catch(error => {

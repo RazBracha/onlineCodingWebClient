@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router';
 import './CodeDisplayPage.css';
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client'
@@ -9,25 +8,27 @@ import Editor from '@monaco-editor/react';
 
 // const serverURL = "https://online-coding-web-gg9w.vercel.app";  vercl
 const serverURL = "https://onlinecodingweb-production.up.railway.app";
+// const serverURL = "http://localhost:5000";
 
 const socket = io(serverURL, {
   withCredentials: true
 })
 
-function CodeDisplayPage(codeId) {
-  const [choosenCode, setChoosenCode] = useState([]);
+function CodeDisplayPage({ pageId }) {
+  const [choosenCode, setChoosenCode] = useState();
   const [text, setText] = useState('');
   const [showMessage, setShowMessage] = useState(false);
   const [user, setUser] = useState();
   const [isMentor, setIsmMentor] = useState()
 
-  const location = useLocation();
-  const codeBlockId = location.pathname.split('/').pop();
+  // const location = useLocation();
+  // const codeBlockId = location.pathname.split('/').pop();
 
+  console.log("render code display page with ", pageId)
 
   useEffect(() => {
     try {
-      fetch(`${serverURL}/codeblocks/${codeBlockId}`)
+      fetch(`${serverURL}/codeblocks/${pageId}`)
         .then(response => response.json())
         .then(data => {
           console.log(data)
@@ -37,20 +38,20 @@ function CodeDisplayPage(codeId) {
     } catch (error) {
       console.error('Error fetching code blocks from server:', error);
     }
-  }, [codeBlockId]);
+  }, [pageId]);
 
   useEffect(() => {
-    socket.emit("join_room", codeBlockId);
-  }, [codeBlockId]);
+    socket.emit("join_room", pageId);
+  }, [pageId]);
 
   useEffect(() => {
     socket.on("user_connected", (data) => {
       setUser(data.user);
     });
-  }, [socket]);
+  }, []);
 
   useEffect(() => {
-    if (choosenCode.answer === text) {
+    if (choosenCode?.answer === text) {
       setShowMessage(true);
     } else {
       setShowMessage(false);
@@ -62,7 +63,7 @@ function CodeDisplayPage(codeId) {
       setText(data.messageText);
 
     });
-  }, [socket]);
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -85,14 +86,15 @@ function CodeDisplayPage(codeId) {
         <h4 className='mission'> Mission: {`${choosenCode?.mission}`}</h4>
 
       </div>
-      <Editor className="editor"
+      <div>kilzi code: {choosenCode?.code}</div>
+      {choosenCode?.code && (<Editor className="editor"
         options={{ readOnly: isMentor ? true : false }}
         height="100px"
         width="500px"
         defaultLanguage="javascript"
-        defaultValue={choosenCode.code}
+        defaultValue={choosenCode?.code}
         value={text}
-        onChange={(e) => handleChangeText(e)} />;
+        onChange={(e) => handleChangeText(e)} />)}
 
 
       {showMessage && (
