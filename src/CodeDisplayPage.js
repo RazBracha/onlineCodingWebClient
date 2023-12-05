@@ -11,6 +11,7 @@ const serverURL = "https://onlinecodingweb-production.up.railway.app";
 // const serverURL = "http://localhost:5000";
 
 const socket = io(serverURL, {
+  transports: ["websocket", "polling"],
   withCredentials: true
 })
 
