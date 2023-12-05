@@ -30,7 +30,9 @@ function CodeDisplayPage({ pageId }) {
 
   useEffect(() => {
     try {
-      fetch(`${serverURL}/codeblocks/${pageId}`)
+      fetch(`${serverURL}/codeblocks/${pageId}`, {
+        credentials: true,
+      })
         .then(response => response.json())
         .then(data => {
           console.log(data)
