@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 function LobbyPage() {
 
-  const server = "https://online-coding-web-gg9w.vercel.app/codeblocks";
+  // const server = "https://online-coding-web-gg9w.vercel.app/codeblocks";   vercel
+  const server = "http://onlinecodingweb-production.up.railway.app";
 
   const [codeBlocks, setCodeBlocks] = useState([]);
 

@@ -7,7 +7,9 @@ import { getUserId } from './Utils';
 import Editor from '@monaco-editor/react';
 
 
-const serverURL = "https://online-coding-web-gg9w.vercel.app";
+// const serverURL = "https://online-coding-web-gg9w.vercel.app";  vercl
+const serverURL = "http://onlinecodingweb-production.up.railway.app";
+
 const socket = io(serverURL, {
   withCredentials: true
 })

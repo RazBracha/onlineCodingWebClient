@@ -7,7 +7,9 @@ import { getUserId } from './Utils';
 
 export function App() {
   const location = useLocation();
-  const server = "https://online-coding-web-gg9w.vercel.app";
+  // const server = "https://online-coding-web-gg9w.vercel.app"; vercel
+  const server = "http://onlinecodingweb-production.up.railway.app";
+
   const pageId = location.pathname.split('/').pop();
 
 
