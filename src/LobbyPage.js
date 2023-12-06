@@ -13,7 +13,7 @@ function LobbyPage() {
   useEffect(() => {
     // Fetch code blocks from the server  
     fetch(`${server}/codeblocks`, {
-      credentials: 'same-origin',
+      credentials: "same-origin",
     })
       .then(response => response.json())
       .then(data => setCodeBlocks(data))
