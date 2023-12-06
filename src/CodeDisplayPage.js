@@ -33,7 +33,7 @@ function CodeDisplayPage({ pageId }) {
       fetch(`${serverURL}/codeblocks/${pageId}`, {
         method: 'GET',
         headers: {
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': 'https://onlinecodingwebclient-production.up.railway.app'
         },
       })
         .then(response => response.json())
