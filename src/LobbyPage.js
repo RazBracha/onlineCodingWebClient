@@ -18,7 +18,7 @@ function LobbyPage() {
         "Access-Control-Allow-Origin": "https://onlinecodingwebclient-production.up.railway.app",
         "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT",
       },
-      credentials: "true",
+      credentials: "omit",
     })
       .then(response => response.json())
       .then(data => setCodeBlocks(data))

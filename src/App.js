@@ -28,7 +28,7 @@ export function App() {
           "Access-Control-Allow-Origin": "https://onlinecodingwebclient-production.up.railway.app",
           "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT",
         },
-        credentials: "true",
+        credentials: "omit",
         method: 'POST',
         body: JSON.stringify(obj),
         mode: 'cors'
