@@ -2,13 +2,9 @@ import './CodeDisplayPage.css';
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client'
 import { getUserId } from './Utils';
-
 import Editor from '@monaco-editor/react';
 
-
-// const serverURL = "https://online-coding-web-gg9w.httpvercel.app";  vercl
-// const serverURL = "https://onlinecodingweb-production.up.railway.app";
-
+// const serverURL = "https://onlinecodingweb-production.up.railway.app"; // Railway server
 const serverURL = "http://localhost:5000";
 
 const socket = io(serverURL, {
@@ -22,8 +18,6 @@ function CodeDisplayPage({ pageId }) {
   const [showMessage, setShowMessage] = useState(false);
   const [user, setUser] = useState();
   const [isMentor, setIsmMentor] = useState()
-
-  console.log("render code display page with ", pageId)
 
   useEffect(() => {
     try {
@@ -45,11 +39,13 @@ function CodeDisplayPage({ pageId }) {
     }
   }, [pageId]);
 
+
   useEffect(() => {
     socket.on("user_connected", (data) => {
       setUser(data.user);
     });
   }, []);
+
 
   useEffect(() => {
     if (choosenCode?.answer === text) {
@@ -59,12 +55,14 @@ function CodeDisplayPage({ pageId }) {
     }
   }, [choosenCode, text]);
 
+
   useEffect(() => {
     socket.on("receive_message", (data) => {
       setText(data.messageText);
 
     });
   }, []);
+
 
   const sendMessage = (messageText) => {
     socket.emit("send_message", { messageText, user });
@@ -79,8 +77,8 @@ function CodeDisplayPage({ pageId }) {
       <div className='display'>
         <h2 className='headline'>{`${choosenCode?.title}`}</h2>
         <h4 className='mission'> Mission: {`${choosenCode?.mission}`}</h4>
-
       </div>
+
       {choosenCode?.code && (<Editor className="editor"
         options={{ readOnly: isMentor ? true : false }}
         height="100px"
@@ -89,7 +87,6 @@ function CodeDisplayPage({ pageId }) {
         defaultValue={choosenCode?.code}
         value={text}
         onChange={(e) => handleChangeText(e)} />)}
-
 
       {showMessage && (
         <div className="message-window">
