@@ -7,9 +7,9 @@ import Editor from '@monaco-editor/react';
 
 
 // const serverURL = "https://online-coding-web-gg9w.httpvercel.app";  vercl
-const serverURL = "https://onlinecodingweb-production.up.railway.app";
+// const serverURL = "https://onlinecodingweb-production.up.railway.app";
 
-// const serverURL = "http://localhost:5000";
+const serverURL = "http://localhost:5000";
 
 const socket = io(serverURL, {
   transports: ["websocket", "polling"],
@@ -23,21 +23,16 @@ function CodeDisplayPage({ pageId }) {
   const [user, setUser] = useState();
   const [isMentor, setIsmMentor] = useState()
 
-  // const location = useLocation();
-  // const codeBlockId = location.pathname.split('/').pop();
-
   console.log("render code display page with ", pageId)
 
   useEffect(() => {
     try {
       fetch(`${serverURL}/codeblocks/${pageId}`, {
-        method: 'GET',
         headers: {
           "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept",
           'Access-Control-Allow-Origin': 'https://onlinecodingwebclient-production.up.railway.app',
           "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT",
-        },
-        credentials: 'omit',
+        }
       })
         .then(response => response.json())
         .then(data => {
@@ -48,10 +43,6 @@ function CodeDisplayPage({ pageId }) {
     } catch (error) {
       console.error('Error fetching code blocks from server:', error);
     }
-  }, [pageId]);
-
-  useEffect(() => {
-    socket.emit("join_room", pageId);
   }, [pageId]);
 
   useEffect(() => {
@@ -75,12 +66,6 @@ function CodeDisplayPage({ pageId }) {
     });
   }, []);
 
-  useEffect(() => {
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
-
   const sendMessage = (messageText) => {
     socket.emit("send_message", { messageText, user });
   };
@@ -96,7 +81,6 @@ function CodeDisplayPage({ pageId }) {
         <h4 className='mission'> Mission: {`${choosenCode?.mission}`}</h4>
 
       </div>
-      <div>kilzi code: {choosenCode?.code}</div>
       {choosenCode?.code && (<Editor className="editor"
         options={{ readOnly: isMentor ? true : false }}
         height="100px"
