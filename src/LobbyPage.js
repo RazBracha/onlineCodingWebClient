@@ -14,7 +14,8 @@ function LobbyPage() {
     // Fetch code blocks from the server  
     fetch(`${server}/codeblocks`, {
       headers: {
-        'Access-Control-Allow-Origin': 'onlinecodingwebclient-production.up.railway.app',
+        "Access-Control-Allow-Origin": "onlinecodingwebclient-production.up.railway.app",
+        "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT",
       },
       credentials: "same-origin",
     })
