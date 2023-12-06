@@ -7,7 +7,7 @@ import Editor from '@monaco-editor/react';
 
 
 // const serverURL = "https://online-coding-web-gg9w.httpvercel.app";  vercl
-const serverURL = "https://onlinecodingweb-production.up.railway.app";
+const serverURL = "http://onlinecodingweb-production.up.railway.app";
 
 // const serverURL = "http://localhost:5000";
 
@@ -31,7 +31,6 @@ function CodeDisplayPage({ pageId }) {
   useEffect(() => {
     try {
       fetch(`${serverURL}/codeblocks/${pageId}`, {
-        credentials: true,
       })
         .then(response => response.json())
         .then(data => {
