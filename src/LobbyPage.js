@@ -13,6 +13,9 @@ function LobbyPage() {
   useEffect(() => {
     // Fetch code blocks from the server  
     fetch(`${server}/codeblocks`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      },
       credentials: "same-origin",
     })
       .then(response => response.json())

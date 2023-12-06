@@ -31,9 +31,10 @@ function CodeDisplayPage({ pageId }) {
   useEffect(() => {
     try {
       fetch(`${serverURL}/codeblocks/${pageId}`, {
+        method: 'GET',
         headers: {
           'Access-Control-Allow-Origin': '*'
-        }
+        },
       })
         .then(response => response.json())
         .then(data => {
