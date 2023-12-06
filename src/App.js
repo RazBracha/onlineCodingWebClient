@@ -24,9 +24,6 @@ export function App() {
       fetch(server + "/codeblocks/locationChanged", {
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
-          "Access-Control-Allow-Headers": "*",
-          'Access-Control-Allow-Origin': 'https://onlinecodingwebclient-production.up.railway.app',
-          "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT",
         },
         method: 'POST',
         body: JSON.stringify(obj),
