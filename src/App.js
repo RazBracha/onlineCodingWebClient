@@ -25,7 +25,6 @@ export function App() {
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
           'Access-Control-Allow-Origin': 'onlinecodingwebclient-production.up.railway.app'
-
         },
         method: 'POST',
         body: JSON.stringify(obj),
