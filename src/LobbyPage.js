@@ -14,6 +14,9 @@ function LobbyPage() {
     // Fetch code blocks from the server  
     fetch(`${server}/codeblocks`, {
       headers: {
+        "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Origin": "https://onlinecodingwebclient-production.up.railway.app",
+        "Access-Control-Allow-Methods": "GET, OPTIONS, POST, PUT",
       },
       credentials: "same-origin",
     })
