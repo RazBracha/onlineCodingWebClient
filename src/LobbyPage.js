@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 function LobbyPage() {
 
-  // const server = "https://onlinecodingweb-production.up.railway.app";  // Railway server
-  const server = "http://localhost:5000";
+  const server = "https://onlinecodingweb-production.up.railway.app";  // Railway server
+  // const server = "http://localhost:5000";
 
   const [codeBlocks, setCodeBlocks] = useState([]);
 

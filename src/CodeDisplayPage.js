@@ -4,8 +4,8 @@ import io from 'socket.io-client'
 import { getUserId } from './Utils';
 import Editor from '@monaco-editor/react';
 
-// const serverURL = "https://onlinecodingweb-production.up.railway.app"; // Railway server
-const serverURL = "http://localhost:5000";
+const serverURL = "https://onlinecodingweb-production.up.railway.app"; // Railway server
+// const serverURL = "http://localhost:5000";
 
 const socket = io(serverURL, {
   transports: ["websocket", "polling"],
